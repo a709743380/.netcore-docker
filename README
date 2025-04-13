@@ -1,5 +1,13 @@
 README
 
+路徑：
+WebApplication3
+  -WebApplication3
+  -Dockerfile
+  -WebApplication3.sln
+
+
+# dockerfile內容開始
 
 # 使用 .NET 8 SDK 基礎映像來構建應用 (8.0)
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -31,3 +39,16 @@ COPY --from=build /app/out .
 
 # 設定容器啟動命令
 ENTRYPOINT ["dotnet", "WebApplication3.dll"]
+
+# dockerfile內容結束
+
+CMD 部分：
+
+在有Dockerfile這一層資料夾使用CMD
+1.建立image 備註 （名稱要小寫）
+docker build -t webapplication3 .
+
+2.運行container
+docker run -d -p 8080:8080 --name myapp webapplication3
+
+CMD 結束
